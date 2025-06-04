@@ -1,9 +1,12 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const app = express();
+const path = require("path");
+const dbPath = path.join(__dirname, "mydb.sqlite");
 app.use(express.json());
 
-const db = new sqlite3.Database("/data/mydb.sqlite", (err) => {
+
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error("Error connecting to SQLite database:", err.message);
   } else {
